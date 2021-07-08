@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FONT AWSOME-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+    <!--BOOTSTRAP 5-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+
+    <!--My CSS Style-->
+    <style>
+        body {
+            background-color: #111;
+        }
+
+        h1 {
+            color: gainsboro;
+            text-align: center;
+        }
+
+        p {
+            color: gray;
+            text-align: center;
+        }
+
+        #circleBar {
+            margin-top: 180px;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #circleBar .round {
+            min-height: 255px;
+            margin-top: 30px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .round canvas{
+            margin-left: 2rem;
+        }
+
+        #circleBar .round strong {
+            margin-top: -50px;
+            position: absolute;
+            top: 47%;
+            left: 54%;
+            transform: translate(-50%);
+            font-size: 40px;
+            color: red;
+            font-weight: 100;
+        }
+
+        #circleBar span {
+            display: flex;
+            position: absolute;
+            font-size: 17px;
+            color: red;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        #circleBar span i {
+            font-size: 22px;
+            color: #ff5c5c;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        section button:hover {
+            background-color: red;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-container {
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: red;
+            padding: 0.75rem 3rem;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            outline: none;
+            border: none
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: red;
+        }
+    </style>
+
+    <title>Circle Progress Bar</title>
+
+</head>
+
+<body>
+
+    <section id="circleBar">
+        <h1>Circle Progress Bar</h1>
+        <p>Animated circle bar designed with html css and js</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="round" data-value='0.75' data-size="200" data-thickness='11'>
+                        <strong></strong>
+
+                        <span><i class="fab fa-html5"></i>HTML Skills</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="round" data-value='0.70' data-size="200" data-thickness='11'>
+                        <strong></strong>
+                        <span><i class="fab fa-html5"></i>
+                            JavaScript Skills
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="round" data-value='0.64' data-size="200" data-thickness='11'>
+                        <strong></strong>
+                        <span><i class="fab fa-html5"></i>
+                            CSS Skills
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button class="btn btn-danger" onClick="Circle('.round')">Refresh</button>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+
+    <script>
+
+        /*==========JQuery*==========*/
+        function Circle(el) {
+            $(el).circleProgress({
+                    fill: {
+                        color: 'red'
+                    }
+                })
+                .on('circle-animation-progress', function (event, progress,
+                    stepValue) {
+                    $(this).find('strong').text(String(stepValue.toFixed(2)).substr(2) + '%');
+                });
+        };
+
+        Circle('.round');
+    </script>
+
+
+</body>
+
+</html>
